@@ -1,13 +1,9 @@
-import express, { Request, Response } from 'express';
+import { MainRoute } from './modules/main';
+import App from './app';
 
-const port = process.env.PORT || 3000;
 
-const app = express();
+const routes = [new MainRoute()];
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('API is running...');
-});
+const app = new App(routes);
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+app.listen();
