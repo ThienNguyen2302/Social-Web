@@ -7,6 +7,7 @@ import hpp from 'hpp';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import 'dotenv/config'
+import { errorMiddleware } from './core/middlewares';
 
 class App {
   public app: express.Application;
@@ -18,9 +19,10 @@ class App {
     this.port = process.env.PORT || 3000;
     this.production = process.env.NODE_ENV === 'production' ? true : false;
 
-    this.initializeRoutes(routes);
     this.connectToDatabase();
     this.initializeMiddleware();
+    this.initializeErrorMiddleware();
+    this.initializeRoutes(routes);
   }
 
   public listen() {
@@ -41,10 +43,18 @@ class App {
       this.app.use(helmet());
       this.app.use(morgan('combined'));
       this.app.use(cors({ origin: 'your.domain.com', credentials: true }));
-    } else {
+    }
+    else {
       this.app.use(morgan('dev'));
       this.app.use(cors({ origin: true, credentials: true }));
     }
+
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+  }
+
+  private initializeErrorMiddleware() {
+    this.app.use(errorMiddleware);
   }
 
   private connectToDatabase() {

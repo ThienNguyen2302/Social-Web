@@ -2,4 +2,6 @@ import { DataStoredInToken, TokenData } from './auth.interface';
 
 import IUser from '../users/users.interface';
 
-export { DataStoredInToken, TokenData, IUser };
+import AuthRoute from './auth.route';
+
+export { AuthRoute ,DataStoredInToken, TokenData, IUser };
