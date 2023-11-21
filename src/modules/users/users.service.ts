@@ -1,5 +1,5 @@
-import { HttpException } from "../../core/exceptions";
-import { isEmptyObject } from "../../core/utils";
+import { HttpException } from "@core/exceptions";
+import { isEmptyObject } from "@core/utils";
 import RegisterDto from "./dto/register.dto";
 import UserSchema from "./users.model";
 import gravatar from 'gravatar';

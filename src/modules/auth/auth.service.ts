@@ -1,9 +1,9 @@
 import { DataStoredInToken, IUser, TokenData } from "./";
-import {UserSchema} from "../users"
+import {UserSchema} from "@modules/users"
 import LoginDto from "./dto/login.dto";
-import { isEmptyObject } from "../../core/utils";
-import { HttpException } from "../../core/exceptions";
-import bcryptjs from "bcryptjs"
+import { isEmptyObject } from "@core/utils";
+import { HttpException } from "@core/exceptions";
+import bcryptjs from "bcryptjs";
 import jwt from 'jsonwebtoken';
 
 class AuthService {

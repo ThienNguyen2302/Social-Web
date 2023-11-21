@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { DataStoredInToken } from './../../modules/auth/auth.interface';
+import { DataStoredInToken } from '@modules/auth/auth.interface';
 import jwt from 'jsonwebtoken';
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {

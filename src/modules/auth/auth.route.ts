@@ -1,5 +1,5 @@
 import AuthController from './auth.controller';
-import { Route } from '../../core/interfaces';
+import { Route } from '@core/interfaces';
 import { Router } from 'express';
 
 export default class AuthRoute implements Route {

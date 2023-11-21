@@ -1,7 +1,7 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import e, { NextFunction, Request, RequestHandler, Response } from 'express';
 import { ValidationError, validate } from 'class-validator';
 
-import { HttpException } from '../exceptions';
+import { HttpException } from '@core/exceptions';
 import { plainToInstance } from 'class-transformer';
 
 const validationMiddleware = (
@@ -18,6 +18,9 @@ const validationMiddleware = (
             })
             .join(', ');
           next(new HttpException(400, messages));
+        }
+        else {
+          next();
         }
       }
     );
