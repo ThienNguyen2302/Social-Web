@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
-
-import { DataStoredInToken } from '@modules/auth/auth.interface';
+import { DataStoredInToken } from '@modules/auth';
 import jwt from 'jsonwebtoken';
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.header('x-auth-token');
-    console.log(token)
+    const authHeader = String(req.headers['authorization'] || '');
+    const token = authHeader.substring(7, authHeader.length);
 
     if (!token)
         return res.status(401).json({ message: 'No token, authorization denied.' });
