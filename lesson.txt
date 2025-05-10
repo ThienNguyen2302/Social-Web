@@ -1,1 +1,68 @@
-lesson for pagination
+# Lesson 10 Changes and Implementation Notes
+
+## Differences between my code and lession/10 branch:
+
+1. API Route Path Structure
+   - lession/10 uses `/api/v1/...` path format
+   - My code uses `/api/...` path format
+   - Note: My current implementation kept as is for consistency
+
+2. Socket.IO Integration
+   - lession/10 includes Socket.IO integration for real-time notifications
+   - lession/10 emits events like 'user_created' and 'user_updated'
+   - Implementation completed: Added Socket.IO server and event emitting in controllers
+
+3. User Controller Features
+   - lession/10 has additional controller methods like getAllPaging, updateUser, deleteUser
+   - Implementation completed: Added all missing controller methods 
+
+4. Expanded User Routes
+   - lession/10 has more user routes (get users, paging, update, delete)
+   - Implementation completed: Added all missing routes in users.route.ts
+
+5. User Service Methods
+   - lession/10 includes more complete user service methods
+   - Implementation completed: Added missing methods (deleteUser, deleteUsers) and verified functionality
+
+6. Authentication Features
+   - lession/10 includes more auth endpoints like refresh-token and revoke-token
+   - Implementation completed: Added refresh token and revocation functionality
+   - Added getCurrentLoginUser method to get the currently logged-in user information
+
+7. File Structure and Naming
+   - Changed file naming from "sever.ts" to "server.ts" to align with conventions
+   - Updated package.json script to reference the correct file name
+
+8. Environment Variables
+   - Added support for JWT_REFRESH_SECRET and PAGE_SIZE environment variables
+   - Updated validateEnv function to include these variables
+
+## Implementation Details:
+
+1. Socket.IO Integration:
+   - Installed socket.io package
+   - Set up Socket.IO server in App class
+   - Implemented connection handling and basic event listeners
+   - Updated user controllers to emit events via Socket.IO
+
+2. JWT Authentication Enhancements:
+   - Added refresh token generation and validation
+   - Implemented token revocation (stub implementation for now)
+   - Extended TokenData interface to include refreshToken
+
+3. User Management:
+   - Implemented pagination support for user listing
+   - Added endpoints for create, read, update, delete (CRUD) operations
+   - Implemented controllers and service methods for all functionality
+
+4. Server Configuration:
+   - Fixed incorrect filename (sever.ts → server.ts)
+   - Updated scripts in package.json
+
+## Next Steps:
+
+Future lessons should focus on implementing:
+1. Profile module with experience and education tracking
+2. Posts module with comments, likes, and sharing functionality
+3. Groups module for user communities
+4. Conversation module for direct messaging between users

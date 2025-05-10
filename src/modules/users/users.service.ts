@@ -135,6 +135,19 @@ class UserService {
         } as IPagination<IUser>;
     }
 
+    public async deleteUser(userId: string): Promise<IUser> {
+        const user = await this.userSchema.findByIdAndDelete(userId).exec();
+        if (!user) {
+            throw new HttpException(404, `User is not exists`);
+        }
+        return user;
+    }
+
+    public async deleteUsers(userIds: string[]): Promise<number | undefined> {
+        const result = await this.userSchema.deleteMany({ _id: { $in: userIds } }).exec();
+        return result.deletedCount;
+    }
+
     private createToken(user: IUser): TokenData {
         const dataInToken: DataStoredInToken = { id: user._id };
         const secret: string = process.env.JWT_TOKEN_SECRET!;
