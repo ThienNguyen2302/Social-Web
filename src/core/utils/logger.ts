@@ -1,7 +1,5 @@
 import winston from 'winston';
 
-
-
 const Logger: winston.Logger = winston.createLogger({
   transports: [
     //
